@@ -1,6 +1,7 @@
 package com;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,6 +24,14 @@ public class Application {
 		return args -> {
 
 			System.out.println("Let's inspect the beans provided by Spring Boot:");
+
+			String countries[] = Locale.getISOCountries();
+			for (String country : countries) {
+				Locale obj = new Locale("", country);
+
+				System.out.println(obj.getDisplayCountry().replaceAll(" ", "_").replaceAll(",", "").replaceAll("'", "")
+						.replaceAll("-", "") + "(\"" + obj.getCountry() + "\", \"" + obj.getDisplayCountry() + "\"), ");
+			}
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
 			Arrays.sort(beanNames);
