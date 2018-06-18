@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component("accessManager")
 public class AccessManager {
 
-	public boolean hasRoles(String... rolesallowed) {
+	public boolean hasRole(String... rolesallowed) {
 
 		for (GrantedAuthority authority : SecurityContextHolder.getContext().getAuthentication().getAuthorities()) {
 			for (String role : rolesallowed) {

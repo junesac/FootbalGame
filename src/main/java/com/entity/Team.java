@@ -32,6 +32,10 @@ public class Team {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "team")
 	private List<Player> players;
 
+	public Team() {
+
+	}
+
 	public Team(String teamName, Country country, List<Player> players) {
 		this.teamName = teamName;
 		this.country = country;

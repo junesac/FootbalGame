@@ -39,6 +39,10 @@ public class Player {
 	@JoinColumn(name = "team_id", nullable = false)
 	private Team team;
 
+	public Player() {
+
+	}
+
 	public Player(String firstName, String lastName, Country country, int age, PlayerType playerType) {
 		this.firstName = firstName;
 		this.lastName = lastName;
