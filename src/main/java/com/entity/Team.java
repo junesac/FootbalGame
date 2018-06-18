@@ -3,12 +3,15 @@ package com.entity;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.model.Country;
 
@@ -23,23 +26,28 @@ public class Team {
 	@Enumerated(EnumType.STRING)
 	private Country country;
 
-	private List<Player> players;
 	private BigInteger teamValue;
 	private BigInteger teamBudget;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "team")
+	private List<Player> players;
 
 	public Team(String teamName, Country country, List<Player> players) {
 		this.teamName = teamName;
 		this.country = country;
 		this.players = players;
+		this.teamValue = calculateTeamValue(players);
+		this.teamBudget = new BigInteger("5000");
+	}
 
-		this.teamValue = BigInteger.ZERO;
+	private BigInteger calculateTeamValue(List<Player> players) {
+		BigInteger sum = BigInteger.ZERO;
 		if (players != null && players.size() > 0) {
 			for (Player player : players) {
-				this.teamValue.add(player.getMarketValue());
+				sum = sum.add(player.getMarketValue());
 			}
 		}
-
-		teamBudget = new BigInteger("5000");
+		return sum;
 	}
 
 	public BigInteger getTeamBudget() {

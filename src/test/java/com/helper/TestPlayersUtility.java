@@ -2,6 +2,8 @@ package com.helper;
 
 import static junit.framework.Assert.assertEquals;
 
+import java.math.BigInteger;
+
 import org.junit.Test;
 
 import com.entity.Player;
@@ -9,11 +11,13 @@ import com.entity.Team;
 
 public class TestPlayersUtility {
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void shouldTestGetTeam() {
 		Team team = PlayersUtility.getTeam();
 		assertEquals(team.getPlayers().size(), 20);
 		assertEquals(team.getTeamName().length(), 6);
+		assertEquals(team.getTeamValue(), BigInteger.valueOf(20000));
 
 		for (Player player : team.getPlayers()) {
 			assertEquals(player.getFirstName().length(), 6);

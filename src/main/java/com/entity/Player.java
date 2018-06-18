@@ -5,9 +5,12 @@ import java.math.BigInteger;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.model.Country;
 import com.model.PlayerType;
@@ -31,6 +34,10 @@ public class Player {
 
 	@Enumerated(EnumType.STRING)
 	private PlayerType playerType;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "team_id", nullable = false)
+	private Team team;
 
 	public Player(String firstName, String lastName, Country country, int age, PlayerType playerType) {
 		this.firstName = firstName;
