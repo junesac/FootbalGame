@@ -29,8 +29,13 @@ public class Application {
 			for (String country : countries) {
 				Locale obj = new Locale("", country);
 
-				System.out.println(obj.getDisplayCountry().replaceAll(" ", "_").replaceAll(",", "").replaceAll("'", "")
-						.replaceAll("-", "") + "(\"" + obj.getCountry() + "\", \"" + obj.getDisplayCountry() + "\"), ");
+				// System.out.println(obj.getDisplayCountry().replaceAll(" ",
+				// "_").replaceAll(",", "").replaceAll("'", "")
+				// .replaceAll("-", "") + "(\"" + obj.getCountry() + "\", \"" +
+				// obj.getDisplayCountry() + "\"), ");
+				
+				System.out.println(
+						obj.getCountry() + "(\"" + obj.getDisplayCountry()+ "\"),");
 			}
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
