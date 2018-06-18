@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.entity.Player;
 import com.entity.Team;
+import com.model.PlayerType;
 
 public class TestPlayersUtility {
 
@@ -25,6 +26,8 @@ public class TestPlayersUtility {
 			int age = player.getAge();
 			assertEquals((age > 18 || age <= 40), true);
 		}
+
+		System.out.println(PlayerType.randomPlayer().getName());
 
 	}
 
