@@ -8,7 +8,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.entity.Team;
-import com.helper.PlayersUtility;
 import com.repo.TeamRepository;
 
 @Service
@@ -19,7 +18,7 @@ public class TeamService {
 
 	public Team getTeam() {
 		// teamRepository.save(PlayersUtility.getTeam());
-		return PlayersUtility.getTeam();
+		return teamRepository.findAll().iterator().next();
 	}
 
 	@PreAuthorize("@accessManager.hasRole({ 'ADMIN' })")
