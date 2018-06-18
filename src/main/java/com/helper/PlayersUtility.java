@@ -28,7 +28,7 @@ public class PlayersUtility {
 		return new Team(teamName, teamCountry, players);
 	}
 
-	public static Player generatePlayer() {
+	private static Player generatePlayer() {
 		String firstName = generateString();
 		String lastName = generateString();
 		Country country = Country.randomCountry();
@@ -37,14 +37,14 @@ public class PlayersUtility {
 		return new Player(firstName, lastName, country, age, playerType);
 	}
 
-	public static String generateString() {
+	private static String generateString() {
 
 		// 6 digits , Use letters & no numbers
 		String generatedString = RandomStringUtils.random(6, true, false);
 		return generatedString;
 	}
 
-	public static int generateAge(int low, int high) {
+	private static int generateAge(int low, int high) {
 		Random r = new Random();
 		return r.nextInt(high - low) + low;
 	}
